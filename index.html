@@ -37,7 +37,13 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background-color: var(--warm-neutral); color: var(--text-charcoal); line-height: 1.7; font-size: 16px; }
+        body { 
+            font-family: var(--font-body); 
+            background-color: var(--warm-neutral); 
+            color: var(--text-charcoal); 
+            line-height: 1.7; 
+            font-size: 16px;
+        }
         img { max-width: 100%; height: auto; display: block; }
         h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 800; line-height: 1.25; color: var(--secondary-teal); }
         h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); margin-bottom: 1rem; }
@@ -72,16 +78,10 @@
         @media (min-width: 1024px) {
             .main-nav { display: block; }
             .hamburger-menu { display: none; }
-            .main-nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
+            .main-nav ul { list-style: none; display: flex; gap: 20px; }
             .main-nav a { text-decoration: none; color: var(--text-charcoal); font-weight: 700; position: relative; padding: 5px 0; cursor: pointer; font-size: 0.9rem;}
             .main-nav a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 3px; background-color: var(--primary-gold); transition: width 0.3s ease; }
             .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
-            .dropdown { position: relative; }
-            .dropdown-content { display: none; position: absolute; background-color: var(--white); min-width: 200px; box-shadow: var(--shadow-strong); z-index: 1; border-radius: var(--border-radius); overflow: hidden; margin-top: 10px; }
-            .dropdown-content a { color: var(--text-charcoal); padding: 12px 16px; text-decoration: none; display: block; font-size: 0.9rem; }
-            .dropdown-content a::after { display: none; }
-            .dropdown-content a:hover { background-color: var(--light-teal-bg); }
-            .dropdown:hover .dropdown-content { display: block; }
         }
         .hamburger-line { display: block; width: 25px; height: 3px; background-color: var(--secondary-teal); margin: 5px 0; transition: all 0.3s ease-in-out; }
         .mobile-nav { position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px; height: 100vh; background-color: rgba(255, 248, 231, 0.95); backdrop-filter: blur(10px); box-shadow: -10px 0 30px rgba(0,0,0,0.1); z-index: 1001; transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1); padding: calc(var(--header-height) + 20px) 20px 20px; display: flex; flex-direction: column; }
@@ -98,10 +98,7 @@
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        .hero { position: relative; color: var(--white); padding: clamp(80px, 20vw, 150px) 0; text-align: center; overflow: hidden; }
-        .hero-video { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; object-fit: cover; transform: translate(-50%, -50%); z-index: -2; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); z-index: -1; }
-        .hero .container { position: relative; z-index: 1; }
+        .hero { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.pexels.com/photos/3662667/pexels-photo-3662667.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); background-size: cover; background-position: center; color: var(--white); padding: clamp(60px, 15vw, 120px) 0; text-align: center; }
         .hero h1, .hero p { color: var(--white); }
         .hero p { font-size: 1.2rem; max-width: 50ch; margin: 1rem auto 0; }
         .hero .btn-primary { transform: scale(1.05); box-shadow: var(--shadow-strong); margin-top: 1.5rem; }
@@ -151,6 +148,14 @@
         .enrollment-step p { margin-bottom: 1.5rem; min-height: 100px; }
         @media (min-width: 900px) { .enrollment-steps { grid-template-columns: repeat(3, 1fr); } }
         
+        /* Form Styles */
+        .form-container { max-width: 600px; margin: 2rem auto 0; text-align: left; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: .5rem; font-weight: 700; color: var(--secondary-teal); }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: var(--border-radius); font-family: var(--font-body); font-size: 1rem; }
+        .form-success-message { display: none; text-align: center; padding: 2rem; background-color: var(--light-teal-bg); border-radius: var(--border-radius); margin-top: 2rem; }
+        .form-success-message h4 { color: var(--secondary-teal); }
+
         /* Blog Styles */
         .article-card { display: flex; flex-direction: column; background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow-soft); overflow: hidden; text-decoration: none; color: var(--text-charcoal); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .article-card:hover { transform: translateY(-5px); box-shadow: var(--strong-shadow); text-decoration: none; }
@@ -178,8 +183,7 @@
         .disclaimer-text { font-size: 0.85rem; font-style: italic; color: #777; text-align: center; }
 
         .main-footer { background-color: var(--secondary-teal); color: var(--white); padding-top: 50px; }
-        .footer-content { display: grid; grid-template-columns: 1fr; gap: 30px; padding-bottom: 30px; text-align: center; }
-        @media (min-width: 768px) { .footer-content { grid-template-columns: repeat(4, 1fr); text-align: left; } }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; padding-bottom: 40px; }
         .footer-column h4 { color: var(--primary-gold); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem; }
         .footer-column ul { list-style: none; padding: 0; }
         .footer-column li { margin-bottom: 10px; }
@@ -192,6 +196,16 @@
         /* Scroll Animations */
         .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out; }
         .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        
+        /* Accordion Styles */
+        .accordion-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .accordion-header { background: none; border: none; width: 100%; text-align: left; padding: 1.5rem 1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .accordion-header h4 { margin: 0; color: var(--secondary-teal); }
+        .accordion-icon { font-size: 1.5rem; color: var(--primary-gold); transition: transform 0.3s ease; }
+        .accordion-item.active .accordion-icon { transform: rotate(45deg); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; }
+        .accordion-content p { padding: 0 1rem 1.5rem; margin: 0; }
+
     </style>
 </head>
 <body>
@@ -276,14 +290,14 @@
                             <p>Flexible schedules for families who need consistent care for a few days a week.</p>
                         </div>
                         <div class="service-card">
-                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 12.5c0-5.25-4.25-9.5-9.5-9.5S2.5 7.25 2.5 12.5c0 4.42 3.03 8.13 7 9.19V15H7.5v-3H10v-2.25C10 7.35 11.62 6 14.12 6c1.1 0 2.06.08 2.34.12v2.7H15.1c-1.21 0-1.44.57-1.44 1.41V12h3.22l-.42 3H13.66v6.69c3.97-1.06 7-4.77 7-9.19z"/></svg></div>
-                            <h4>Overnight & Flex-Care</h4>
-                            <p>Reliable, high-quality care options for non-traditional schedules and unique family needs.</p>
+                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg></div>
+                            <h4>Drop-In & Flex-Care</h4>
+                            <p>Reliable options for non-traditional schedules. Please call for availability.</p>
                         </div>
                         <div class="service-card">
-                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg></div>
-                            <h4>Drop-In Care</h4>
-                            <p>Available on a limited basis. Perfect for when you need care for a few hours. Please call for availability.</p>
+                            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                            <h4>Family Resources</h4>
+                            <p>Connecting our families to a trusted network of community partners and supports.</p>
                         </div>
                     </div>
                 </div>
@@ -302,8 +316,8 @@
                                             <h4>State Licensed Facility</h4>
                                         </div>
                                         <div class="flip-card-back">
-                                            <h4>Fully Licensed</h4>
-                                            <p>Licensed by the California Department of Social Services.</p>
+                                            <h4>Fully Licensed & Insured</h4>
+                                            <p>Licensed by the CA Dept. of Social Services (#343626863) and fully insured.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -317,7 +331,7 @@
                                         </div>
                                         <div class="flip-card-back">
                                             <h4>FBI & DOJ Cleared</h4>
-                                            <p>All staff have passed background checks from the FBI and Department of Justice.</p>
+                                            <p>All staff have passed comprehensive background checks from the FBI & Dept. of Justice.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -422,12 +436,141 @@
                 </div>
             </section>
         </section>
-        <section id="programs" class="page" aria-labelledby="programs-heading"><header class="page-header"><div class="container"><h1 id="programs-heading">Programs & Services</h1><p>Nurturing care and development at every stage.</p></div></header><section class="section-padding"><div class="container" style="max-width: 800px; margin: auto;"><div class="accordion"><div class="accordion-item"><button class="accordion-header"><h4>Full-Time Care (Infants & Toddlers)</h4><span class="accordion-icon">+</span></button><div class="accordion-content"><p>Our infant and toddler program provides a warm, safe, and nurturing environment that focuses on building strong bonds and attachments. We support early development through sensory exploration, tummy time, music, and gentle routines that align with your family's needs.</p></div></div><div class="accordion-item"><button class="accordion-header"><h4>Full-Time Care (Preschoolers)</h4><span class="accordion-icon">+</span></button><div class="accordion-content"><p>Our preschool program fosters school readiness through a play-based curriculum. We focus on social-emotional learning, early literacy and math concepts, creative arts, and problem-solving skills. Children engage in both structured activities and free play to build confidence and independence.</p></div></div><div class="accordion-item"><button class="accordion-header"><h4>Part-Time Care</h4><span class="accordion-icon">+</span></button><div class="accordion-content"><p>We offer flexible part-time schedules to accommodate the varying needs of families. This option provides the same high-quality, play-based learning environment as our full-time program, but for a set number of days per week. Please contact us to discuss available schedules.</p></div></div><div class="accordion-item"><button class="accordion-header"><h4>Overnight & Flexible Care</h4><span class="accordion-icon">+</span></button><div class="accordion-content"><p>Understanding the needs of modern families, we offer reliable and high-quality overnight and flexible care options. Please contact us directly to discuss your family's specific scheduling needs so we can provide a safe and comfortable environment for your child outside of standard hours.</p></div></div><div class="accordion-item"><button class="accordion-header"><h4>Drop-In Care</h4><span class="accordion-icon">+</span></button><div class="accordion-content"><p>Upon availability, we offer drop-in care for currently enrolled families who may need care for a few extra hours. This service is provided on a first-come, first-served basis. Please call us directly to inquire about same-day availability.</p></div></div></div></div></section></section>
-        <section id="blog" class="page" aria-labelledby="blog-heading"><header class="page-header"><div class="container"><h1 id="blog-heading">From the Village Voice</h1><p>Insights and resources for our families and community.</p></div></header><section class="section-padding"><div class="container" style="max-width: 900px;"><a href="#article-daycare-transition" class="article-card nav-link" style="text-decoration: none;"><img src="https://images.pexels.com/photos/4474052/pexels-photo-4474052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Parent hugging a child goodbye" class="article-card-img"><div class="article-card-content"><h3>Expert Tips for a Smooth Daycare Transition</h3><p class="meta">A Village Values Resource | July 29, 2025</p><p class="excerpt">Starting daycare is a big step. We've gathered expert advice to help make the transition a positive and reassuring experience for your family.</p><span class="read-more">Read More →</span></div></a></div></section></section>
-        <section id="article-daycare-transition" class="page"><section class="section-padding"><div class="container article-layout"><article class="article-content"><header class="article-header"><h1>5 Expert Tips for a Smooth Daycare Transition</h1><p class="article-meta">A Village Values Resource | Adapted from NAEYC & CDSS Guidance</p></header><img src="https://images.pexels.com/photos/4474052/pexels-photo-4474052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Parent hugging a child goodbye" class="article-featured-img"><p>Starting childcare is a major milestone in your child’s life—and in yours! It’s completely normal for everyone to feel a mix of excitement and anxiety. At Village Values, we partner with families to make this process a success. Here are five trusted tips, adapted from guidance by leading early childhood organizations, to help make the transition as smooth as possible.</p><h4>1. Talk About it Positively and Often</h4><p>Familiarity builds comfort. In the days leading up to the start, talk about "school" in an exciting way. You can read books about starting school or say things like, "Soon you'll get to play with new friends and fun toys at Village Values!" Your positive energy is contagious and helps frame the experience as an adventure.</p><h4>2. Establish a Goodbye Routine</h4><p>A short, sweet, and predictable goodbye routine creates security. It could be two hugs, a high-five, and a wave from the window. The key is to be loving, but brief and consistent. This helps your child understand the routine of separation and reunion.</p><blockquote>"As tempting as it may be, never sneak out while your child is distracted. This can create anxiety and mistrust. A confident, loving goodbye helps them understand that you will always come back."</blockquote><h4>3. Bring a Comfort from Home</h4><p>A small piece of home can provide immense security. Pack a familiar object like a special blanket ("lovie"), a favorite stuffed animal, or a laminated photo of your family. This "transitional object" gives them a tangible link to you throughout the day when they need a little extra reassurance.</p><h4>4. Create a Partnership with Your Caregivers</h4><p>We are your partners in this! Communication is everything. Share your child’s schedule, what soothes them, their special words for things, and any concerns you have. The more we know, the better we can support your child's individual needs. Trust that we are experts in this process and are here to help both you and your little one feel secure.</p><h4>5. Be Confident at Drop-Off</h4><p>Children are incredibly perceptive and feed off your emotions. It's okay to feel sad, but try your best to project a calm and confident attitude. If you seem anxious, your child may feel there is something to worry about. Give your hugs, say your loving goodbye as you practiced, and then depart confidently. A happy, confident departure from you gives them the green light to have a happy, confident day.</p><hr style="margin: 2rem 0;"><a href="#blog" class="nav-link">← Back to Village Voice</a></article></div></section></section>
-        <section id="internships" class="page" aria-labelledby="internships-heading"><header class="page-header"><div class="container"><h1 id="internships-heading">Internship Program</h1><p>Grow With Us and Make a Difference.</p></div></header><section class="section-padding"><div class="container text-center" style="max-width: 700px; margin: auto;"><h2>Mentoring the Next Generation</h2><p>Our internship program provides hands-on experience and mentorship for aspiring leaders in Early Childhood Education, Culinary Arts, and Administration. If you are passionate about making a difference in the lives of children and families, we encourage you to apply.</p><form id="internship-form" class="form-container" novalidate><div class="form-group"><label for="intern-name">Full Name</label><input type="text" id="intern-name" name="intern-name" required></div><div class="form-group"><label for="intern-email">Email Address</label><input type="email" id="intern-email" name="intern-email" required></div><div class="form-group"><label for="intern-interest">Tell us about your interest</label><textarea id="intern-interest" name="intern-interest" rows="4" required></textarea></div><button type="submit" class="btn btn-secondary">Submit Application</button></form><div id="internship-form-success" class="form-success-message"><h4>Application Submitted!</h4><p>Thank you for your interest. We have received your application and will be in touch if your qualifications meet our current needs.</p></div></div></section></section>
-        <section id="partnerships" class="page" aria-labelledby="partnerships-heading"><header class="page-header"><div class="container"><h1 id="partnerships-heading">Our Village Partners</h1><p>A curated network of trusted local businesses and resources dedicated to supporting our Village Values families.</p></div></header><section class="section-padding"><div class="container"><div class="text-center" style="margin-bottom: 3rem;"><h2>Interested in Joining Our Network?</h2><p>We are always looking to partner with trusted, high-quality local businesses. If you offer a service that could benefit our families, we'd love to connect.</p><a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Apply to be a Partner</a></div><hr style="margin: 3rem auto; border: 1px solid rgba(0,0,0,0.1); max-width: 50%;"><div><h3 style="margin-bottom: 2rem; text-align: center;">Family Wellness & Health</h3><div class="partner-grid"><div class="partner-card"><img src="https://placehold.co/150x80/008080/FFF?text=Partner+Logo" alt="Partner Logo"><h4 style="color: #008080;">Sacramento Pediatrics</h4><p style="font-size: 0.9rem;">Compassionate pediatric care for every stage of childhood.</p><a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Website</a></div><div class="partner-card"><img src="https://placehold.co/150x80/008080/FFF?text=Partner+Logo" alt="Partner Logo"><h4 style="color: #008080;">RC Family Dentistry</h4><p style="font-size: 0.9rem;">Gentle and friendly dental services for children and adults.</p><a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Website</a></div><div class="partner-card"><img src="https://placehold.co/150x80/008080/FFF?text=Partner+Logo" alt="Partner Logo"><h4 style="color: #008080;">Little Sprouts Nutrition</h4><p style="font-size: 0.9rem;">Personalized nutrition counseling for picky eaters.</p><a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Website</a></div></div></div><div class="disclaimer-container"><p class="disclaimer-text"><strong>Please Note:</strong> This list is provided as a courtesy to connect our Village families with our growing network of resources. Village Values does not endorse any person or businesses listed herein and does not assume liability for the services these businesses provide or fail to provide. Before hiring any person or business, families should evaluate that they carry the proper licensing and or credentials to perform any work or services rendered.</p></div></div></section></section>
-        <section id="contact" class="page" aria-labelledby="contact-heading"><header class="page-header"><div class="container"><h1 id="contact-heading">Contact Us</h1><p>We'd love to hear from you.</p></div></header><section class="section-padding"><div class="container"><div class="text-center" style="max-width: 700px; margin: auto;"><h2>Get in Touch</h2><p>For questions about enrollment, programs, or anything else, please don't hesitate to reach out.</p></div><form id="contact-form" class="form-container" novalidate><div class="form-group"><label for="contact-name">Name</label><input type="text" id="contact-name" name="contact-name" required></div><div class="form-group"><label for="contact-email">Email</label><input type="email" id="contact-email" name="contact-email" required></div><div class="form-group"><label for="contact-message">Message</label><textarea id="contact-message" name="contact-message" rows="5" required></textarea></div><button type="submit" class="btn btn-secondary">Send Message</button></form><div id="contact-form-success" class="form-success-message"><h4>Message Sent!</h4><p>Thank you for reaching out. We have received your message and will get back to you shortly.</p></div></div></section></section>
+
+        <section id="programs" class="page" aria-labelledby="programs-heading">
+            <header class="page-header"><div class="container"><h1 id="programs-heading">Programs & Services</h1><p>Nurturing care and development at every stage.</p></div></header>
+            <section class="section-padding">
+                <div class="container" style="max-width: 800px; margin: auto;">
+                    <div class="accordion">
+                        <div class="accordion-item"><button class="accordion-header"><h4>Full-Time Care (Infants & Toddlers)</h4><span class="accordion-icon">+</span></button><div class="accordion-content"><p>Our infant and toddler program provides a warm, safe, and nurturing environment that focuses on building strong bonds and attachments. We support early development through sensory exploration, tummy time, music, and gentle routines that align with your family's needs.</p></div></div>
+                        <div class="accordion-item"><button class="accordion-header"><h4>Full-Time Care (Preschoolers)</h4><span class="accordion-icon">+</span></button><div class="accordion-content"><p>Our preschool program fosters school readiness through a play-based curriculum. We focus on social-emotional learning, early literacy and math concepts, creative arts, and problem-solving skills. Children engage in both structured activities and free play to build confidence and independence.</p></div></div>
+                        <div class="accordion-item"><button class="accordion-header"><h4>Part-Time Care</h4><span class="accordion-icon">+</span></button><div class="accordion-content"><p>We offer flexible part-time schedules to accommodate the varying needs of families. This option provides the same high-quality, play-based learning environment as our full-time program, but for a set number of days per week. Please contact us to discuss available schedules.</p></div></div>
+                        <div class="accordion-item"><button class="accordion-header"><h4>Drop-In & Flexible Care</h4><span class="accordion-icon">+</span></button><div class="accordion-content"><p>Understanding the needs of modern families, we offer reliable and high-quality drop-in and flexible care options. This service is provided on a first-come, first-served basis. Please call us directly to inquire about same-day availability and to discuss your family's specific scheduling needs.</p></div></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="blog" class="page" aria-labelledby="blog-heading">
+            <header class="page-header"><div class="container"><h1 id="blog-heading">From the Village Voice</h1><p>Insights and resources for our families and community.</p></div></header>
+            <section class="section-padding">
+                <div class="container" style="max-width: 900px;">
+                    <a href="#article-daycare-transition" class="article-card nav-link" style="text-decoration: none;">
+                        <img src="https://images.pexels.com/photos/4474052/pexels-photo-4474052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Parent hugging a child goodbye" class="article-card-img">
+                        <div class="article-card-content">
+                            <h3>Expert Tips for a Smooth Daycare Transition</h3>
+                            <p class="meta">A Village Values Resource | August 11, 2025</p>
+                            <p class="excerpt">Starting daycare is a big step. We've gathered expert advice to help make the transition a positive and reassuring experience for your family.</p>
+                            <span class="read-more">Read More →</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </section>
+
+        <section id="article-daycare-transition" class="page">
+            <section class="section-padding">
+                <div class="container article-layout">
+                    <article class="article-content">
+                        <header class="article-header">
+                            <h1>5 Expert Tips for a Smooth Daycare Transition</h1>
+                            <p class="article-meta">A Village Values Resource | Adapted from NAEYC & CDSS Guidance</p>
+                        </header>
+                        <img src="https://images.pexels.com/photos/4474052/pexels-photo-4474052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Parent hugging a child goodbye" class="article-featured-img">
+                        <p>Starting childcare is a major milestone in your child’s life—and in yours! It’s completely normal for everyone to feel a mix of excitement and anxiety. At Village Values, we partner with families to make this process a success. Here are five trusted tips, adapted from guidance by leading early childhood organizations, to help make the transition as smooth as possible.</p>
+                        <h4>1. Talk About it Positively and Often</h4>
+                        <p>Familiarity builds comfort. In the days leading up to the start, talk about "school" in an exciting way. You can read books about starting school or say things like, "Soon you'll get to play with new friends and fun toys at Village Values!" Your positive energy is contagious and helps frame the experience as an adventure.</p>
+                        <h4>2. Establish a Goodbye Routine</h4>
+                        <p>A short, sweet, and predictable goodbye routine creates security. It could be two hugs, a high-five, and a wave from the window. The key is to be loving, but brief and consistent. This helps your child understand the routine of separation and reunion.</p>
+                        <blockquote>"As tempting as it may be, never sneak out while your child is distracted. This can create anxiety and mistrust. A confident, loving goodbye helps them understand that you will always come back."</blockquote>
+                        <h4>3. Bring a Comfort from Home</h4>
+                        <p>A small piece of home can provide immense security. Pack a familiar object like a special blanket ("lovie"), a favorite stuffed animal, or a laminated photo of your family. This "transitional object" gives them a tangible link to you throughout the day when they need a little extra reassurance.</p>
+                        <h4>4. Create a Partnership with Your Caregivers</h4>
+                        <p>We are your partners in this! Communication is everything. Share your child’s schedule, what soothes them, their special words for things, and any concerns you have. The more we know, the better we can support your child's individual needs. Trust that we are experts in this process and are here to help both you and your little one feel secure.</p>
+                        <h4>5. Be Confident at Drop-Off</h4>
+                        <p>Children are incredibly perceptive and feed off your emotions. It's okay to feel sad, but try your best to project a calm and confident attitude. If you seem anxious, your child may feel there is something to worry about. Give your hugs, say your loving goodbye as you practiced, and then depart confidently. A happy, confident departure from you gives them the green light to have a happy, confident day.</p>
+                        <hr style="margin: 2rem 0;">
+                        <a href="#blog" class="nav-link">← Back to Village Voice</a>
+                    </article>
+                </div>
+            </section>
+        </section>
+
+        <section id="internships" class="page" aria-labelledby="internships-heading">
+            <header class="page-header"><div class="container"><h1 id="internships-heading">Internship Program</h1><p>Grow With Us and Make a Difference.</p></div></header>
+            <section class="section-padding">
+                <div class="container text-center" style="max-width: 700px; margin: auto;">
+                    <h2>Mentoring the Next Generation</h2>
+                    <p>Our internship program provides hands-on experience and mentorship for aspiring leaders in Early Childhood Education, Culinary Arts, and Administration. If you are passionate about making a difference in the lives of children and families, we encourage you to apply.</p>
+                    <form id="internship-form" class="form-container" novalidate>
+                        <div class="form-group"><label for="intern-name">Full Name</label><input type="text" id="intern-name" name="intern-name" required></div>
+                        <div class="form-group"><label for="intern-email">Email Address</label><input type="email" id="intern-email" name="intern-email" required></div>
+                        <div class="form-group"><label for="intern-interest">Tell us about your interest</label><textarea id="intern-interest" name="intern-interest" rows="4" required></textarea></div>
+                        <button type="submit" class="btn btn-secondary">Submit Application</button>
+                    </form>
+                    <div id="internship-form-success" class="form-success-message"><h4>Application Submitted!</h4><p>Thank you for your interest. We have received your application and will be in touch if your qualifications meet our current needs.</p></div>
+                </div>
+            </section>
+        </section>
+
+        <section id="partnerships" class="page" aria-labelledby="partnerships-heading">
+            <header class="page-header"><div class="container"><h1 id="partnerships-heading">Our Village Partners</h1><p>A curated network of trusted local businesses and resources dedicated to supporting our Village Values families.</p></div></header>
+            <section class="section-padding">
+                <div class="container">
+                    <div class="text-center" style="margin-bottom: 3rem;">
+                        <h2>Interested in Joining Our Network?</h2>
+                        <p>We are always looking to partner with trusted, high-quality local businesses. If you offer a service that could benefit our families, we'd love to connect.</p>
+                        <a href="mailto:info@villagevalues.net?subject=Partnership Inquiry" class="btn btn-primary">Become a Partner</a>
+                    </div>
+                    <hr style="margin: 3rem auto; border: 1px solid rgba(0,0,0,0.1); max-width: 50%;">
+                    <div>
+                        <h3 style="margin-bottom: 2rem; text-align: center;">Family Wellness & Health</h3>
+                        <div class="partner-grid">
+                            <div class="partner-card">
+                                <img src="https://i.imgur.com/L4u2xwg.png" alt="Sacramento Pediatrics Logo" style="max-height: 70px;">
+                                <h4 style="color: #008080;">Sacramento Pediatrics</h4>
+                                <p style="font-size: 0.9rem;">Compassionate pediatric care for every stage of childhood.</p>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Website</a>
+                            </div>
+                            <div class="partner-card">
+                                <img src="https://i.imgur.com/n7q8y3t.png" alt="RC Family Dentistry Logo" style="max-height: 70px;">
+                                <h4 style="color: #008080;">RC Family Dentistry</h4>
+                                <p style="font-size: 0.9rem;">Gentle and friendly dental services for children and adults.</p>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Website</a>
+                            </div>
+                            <div class="partner-card">
+                                <img src="https://i.imgur.com/9F0Z1sE.png" alt="Little Sprouts Nutrition Logo" style="max-height: 70px;">
+                                <h4 style="color: #008080;">Little Sprouts Nutrition</h4>
+                                <p style="font-size: 0.9rem;">Personalized nutrition counseling for picky eaters.</p>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="disclaimer-container">
+                        <p class="disclaimer-text"><strong>Please Note:</strong> This list is provided as a courtesy to connect our Village families with our growing network of resources. Village Values does not endorse any person or businesses listed herein and does not assume liability for the services these businesses provide or fail to provide. Before hiring any person or business, families should evaluate that they carry the proper licensing and or credentials to perform any work or services rendered.</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="contact" class="page" aria-labelledby="contact-heading">
+            <header class="page-header"><div class="container"><h1 id="contact-heading">Contact Us</h1><p>We'd love to hear from you.</p></div></header>
+            <section class="section-padding">
+                <div class="container">
+                    <div class="text-center" style="max-width: 700px; margin: auto;">
+                        <h2>Get in Touch</h2>
+                        <p>For questions about enrollment, programs, or anything else, please don't hesitate to reach out.</p>
+                    </div>
+                    <form id="contact-form" class="form-container" novalidate>
+                        <div class="form-group"><label for="contact-name">Name</label><input type="text" id="contact-name" name="contact-name" required></div>
+                        <div class="form-group"><label for="contact-email">Email</label><input type="email" id="contact-email" name="contact-email" required></div>
+                        <div class="form-group"><label for="contact-message">Message</label><textarea id="contact-message" name="contact-message" rows="5" required></textarea></div>
+                        <button type="submit" class="btn btn-secondary">Send Message</button>
+                    </form>
+                    <div id="contact-form-success" class="form-success-message"><h4>Message Sent!</h4><p>Thank you for reaching out. We have received your message and will get back to you shortly.</p></div>
+                </div>
+            </section>
+        </section>
     </main>
 
     <footer class="main-footer" role="contentinfo">
@@ -454,10 +597,10 @@
                     <h4>Follow Us</h4>
                      <div class="social-media">
                         <a href="https://www.instagram.com/village.values.childcare?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Village Values on Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><defs><radialGradient id="a" cx="19.38" cy="4.58" r="32.4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd5"/><stop offset=".3" stop-color="#ff543e"/><stop offset=".4" stop-color="#c837ab"/><stop offset="1" stop-color="#4c63d2"/></radialGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.26 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.26 0 12 0z" fill="url(#a)"/><path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z" fill="#fff"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-2.163C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.26 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.26 0 12 0z"/><path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
                         </a>
                         <a href="https://www.facebook.com/profile.php?id=61577857693376&mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Village Values on Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#1877F2"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
                         </a>
                     </div>
                 </div>
@@ -490,11 +633,15 @@
             targetPage.classList.add('active');
 
             if (pushState) {
-                history.pushState({pageId}, `${pageId}`, `#${pageId}`);
+                try {
+                    history.pushState({pageId}, `${pageId}`, `#${pageId}`);
+                } catch (e) {
+                    // Silently fail on security errors (e.g., in sandboxed environments)
+                }
             }
 
             const targetHref = `#${pageId}`;
-            document.querySelectorAll('.nav-link').forEach(link => {
+            document.querySelectorAll('.main-nav a, .mobile-nav a, .footer-column a').forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === targetHref || (link.getAttribute('href') === '#blog' && pageId.startsWith('article-'))) {
                     link.classList.add('active');
@@ -503,15 +650,18 @@
             
             closeMobileMenu();
             if (pageId === 'home') {
-                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                 window.scrollTo({ top: 0, behavior: 'auto' });
             }
         }
 
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const pageId = this.getAttribute('href').substring(1);
-                showPage(pageId);
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const pageId = href.substring(1);
+                    showPage(pageId);
+                }
             });
         });
 
@@ -520,24 +670,20 @@
             showPage(pageId, false);
         });
         
-        const initialPage = window.location.hash.substring(1) || 'home';
+        const initialPage = window.location.hash ? window.location.hash.substring(1) : 'home';
         showPage(initialPage, false);
 
         function openMobileMenu() {
             hamburger.classList.add('active');
             hamburger.setAttribute('aria-expanded', 'true');
             mobileNav.classList.add('active');
-            document.addEventListener('keydown', handleEscapeKey);
         }
 
         function closeMobileMenu() {
             hamburger.classList.remove('active');
             hamburger.setAttribute('aria-expanded', 'false');
             mobileNav.classList.remove('active');
-            document.removeEventListener('keydown', handleEscapeKey);
         }
-
-        function handleEscapeKey(e) { if (e.key === 'Escape') closeMobileMenu(); }
 
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -555,59 +701,95 @@
             card.addEventListener('click', function() { this.classList.toggle('is-flipped'); });
             card.addEventListener('mouseleave', function() { this.classList.remove('is-flipped'); });
         });
+        
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                
+                item.classList.toggle('active');
 
-        const carouselTrack = document.querySelector('#safety-carousel .carousel-track');
-        const slides = Array.from(carouselTrack.children);
-        const dotsNav = document.querySelector('#safety-carousel .carousel-dots');
-        let slideWidth = slides[0].getBoundingClientRect().width;
-        let currentIndex = 0;
-
-        function createDots() {
-            slides.forEach((_, i) => {
-                const dot = document.createElement('button');
-                dot.classList.add('carousel-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => {
-                    moveToSlide(i);
-                    resetInterval();
-                });
-                dotsNav.appendChild(dot);
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.style.padding = '0 1rem 1.5rem';
+                } else {
+                    content.style.maxHeight = '0';
+                    content.style.padding = '0 1rem';
+                }
             });
-        }
-
-        function updateDots(targetIndex) {
-             const dots = Array.from(dotsNav.children);
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === targetIndex);
-            });
-        }
-
-        function moveToSlide(targetIndex) {
-            carouselTrack.style.transform = 'translateX(-' + slideWidth * targetIndex + 'px)';
-            currentIndex = targetIndex;
-            updateDots(currentIndex);
-        }
-        
-        let slideInterval;
-        function startInterval() {
-             slideInterval = setInterval(() => {
-                let nextIndex = (currentIndex + 1) % slides.length;
-                moveToSlide(nextIndex);
-            }, 5000);
-        }
-        
-        function resetInterval() {
-            clearInterval(slideInterval);
-            startInterval();
-        }
-        
-        window.addEventListener('resize', () => {
-            slideWidth = slides[0].getBoundingClientRect().width;
-            moveToSlide(currentIndex);
         });
 
-        createDots();
-        startInterval();
+
+        // Carousel functionality
+        const carousel = document.querySelector('#safety-carousel');
+        if (carousel) {
+            const carouselTrack = carousel.querySelector('.carousel-track');
+            const slides = Array.from(carouselTrack.children);
+            const dotsNav = carousel.querySelector('.carousel-dots');
+            let slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
+            let currentIndex = 0;
+            let slideInterval;
+
+            function createDots() {
+                dotsNav.innerHTML = '';
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        moveToSlide(i);
+                        resetInterval();
+                    });
+                    dotsNav.appendChild(dot);
+                });
+            }
+
+            function updateDots(targetIndex) {
+                 const dots = Array.from(dotsNav.children);
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === targetIndex);
+                });
+            }
+
+            function moveToSlide(targetIndex) {
+                if (slides.length > 0) {
+                    carouselTrack.style.transform = 'translateX(-' + slideWidth * targetIndex + 'px)';
+                    currentIndex = targetIndex;
+                    updateDots(currentIndex);
+                }
+            }
+            
+            function startInterval() {
+                 slideInterval = setInterval(() => {
+                    let nextIndex = (currentIndex + 1) % slides.length;
+                    moveToSlide(nextIndex);
+                }, 5000);
+            }
+            
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startInterval();
+            }
+            
+            function setupCarousel() {
+                if (slides.length > 0) {
+                    slideWidth = slides[0].getBoundingClientRect().width;
+                    createDots();
+                    moveToSlide(currentIndex);
+                    resetInterval();
+                }
+            }
+
+            window.addEventListener('resize', () => {
+                if(slides.length > 0) {
+                    slideWidth = slides[0].getBoundingClientRect().width;
+                    moveToSlide(currentIndex);
+                }
+            });
+            
+            setupCarousel();
+        }
         
         function handleFormSubmit(formId, successMessageId) {
             const form = document.getElementById(formId);
@@ -615,13 +797,16 @@
             if (form && successMessage) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    form.style.display = 'none';
-                    successMessage.style.display = 'block';
+                    if(form.checkValidity()) {
+                        form.style.display = 'none';
+                        successMessage.style.display = 'block';
+                    } else {
+                        form.reportValidity();
+                    }
                 });
             }
         }
         
-        handleFormSubmit('partnership-form', 'partnership-form-success');
         handleFormSubmit('contact-form', 'contact-form-success');
         handleFormSubmit('internship-form', 'internship-form-success');
         
@@ -630,6 +815,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
